@@ -1,7 +1,7 @@
 package PassportFolder;
 import java.util.*;
 
-class Admin {
+class Admin{
     private ArrayList<PassportInformation> applications = new ArrayList<>();
     private final String adminUser = "admin09";
     private final String adminPass = "1234";
@@ -48,6 +48,5 @@ class Admin {
         }
     }
     System.out.println("Application not found.");
-}
-
+    }
 }

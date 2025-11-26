@@ -1,6 +1,7 @@
 package PassportFolder;
 import java.util.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 class AppointmentAccess {
@@ -26,7 +27,7 @@ class AppointmentAccess {
     public void applyPassport(Scanner sc) {
         while(true){
         //User's Credential
-        System.out.println("\n=== PASSPORT APPLICATION FORM === ");
+        System.out.println("\n======== PASSPORT APPLICATION FORM ========");
         System.out.print("Application Type(New | Renewal): ");
         String appType = sc.nextLine();
 
@@ -60,25 +61,26 @@ class AppointmentAccess {
         System.out.print("Civil Status(Single | Married):");
         String civilStatus = sc.nextLine();
 
+        System.out.print("Father Name: ");
+        String fatherName = sc.nextLine();
+
+        System.out.print("Mother Name: ");
+        String motherName = sc.nextLine();
+
         //StandBy
         /*System.out.println("Citizenship Acquired By\n(Birth, Naturalization, Election, RA 9225): ");
         String citizenShip = sc.nextLine();
-
-        System.out.println("Father Name");
-        String fatherName = sc.nextLine();
-
-        System.out.println("Mother Name");
-        String motherName = sc.nextLine();
         */
-        LocalDate today = LocalDate.now();
-        int currentYear = today.getYear();
-        String appointmentDate;
-            
+        
+        LocalDate todayDate = LocalDate.now();
+        int currentYear = todayDate.getYear();
+
+        
         System.out.print("Appointment Date (YYYY-MM-DD): ");
-        appointmentDate = sc.nextLine();
+        String appointmentDate = sc.nextLine();
         try{
             LocalDate date = LocalDate.parse(appointmentDate, DateTimeFormatter.ISO_LOCAL_DATE);
-            if(date.isBefore(today)) {
+            if(date.isBefore(todayDate)) {
                 System.out.println("Appointment date cannot be in the past!");
             }else if(date.getYear() != currentYear) {
                 System.out.println("Appointment must be within the current year.");
@@ -101,7 +103,7 @@ class AppointmentAccess {
                     // Create and Store the Application
                     int refNum = applications.size() + 1;
                     PassportInformation app = new PassportInformation(appType, lastName, firstName, middleName, sex,
-                            birthDate, placeofBirth, address, contactNum, email, civilStatus);
+                            birthDate, placeofBirth, address, contactNum, email, civilStatus, fatherName, motherName);
                     app.setAppointmentDate(appointmentDate);
                     app.setTimeSlots(new String[]{chosenSlot});
                     applications.add(app);
@@ -110,15 +112,7 @@ class AppointmentAccess {
                     // Review the application here
                     System.out.println("\n====== Review Your Application ======");
                     System.out.println("Application Type: " + appType);
-                    System.out.println("Name: " + firstName + " " + middleName + " " + lastName);
-                    System.out.println("Sex: " + sex);
-                    System.out.println("Birthdate: " + birthDate);
-                    System.out.println("Place of Birth: " + placeofBirth);
-                    System.out.println("Address: " + address);
-                    System.out.println("Contact Number: " + contactNum);
-                    System.out.println("Email: " + email);
-                    System.out.println("Civil Status: " + civilStatus);
-                    System.out.println("Appointment Date: " + appointmentDate);
+                    app.displayInfo();
                     System.out.println("Time Slot: " + chosenSlot);
 
                     // Ask user to confirm or edit
@@ -147,7 +141,7 @@ class AppointmentAccess {
             }
             }catch(Exception e){
             System.out.println("Invalid format! Please use YYYY-MM-DD.");
-            }
+            }    
         }
     }
 

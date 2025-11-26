@@ -2,13 +2,13 @@ package PassportFolder;
 import java.util.Arrays;
 
 class PassportInformation {
-    private String firstName, middleName, lastName, sex;
-    private String applicationType, civilStatus, placeofBirth, birthDate, address, email, contactNum, status, appointmentDate;
+    private String firstName, middleName, lastName, fatherName, motherName;
+    private String sex, applicationType, civilStatus, placeofBirth, birthDate, address, email, contactNum, status, appointmentDate;
     private int referenceNumber;
     private String[] timeSlots;
 
     public PassportInformation( String appType, String lastName, String firstName, String middleName, String sex, String birthDate, 
-                                String placeofBirth, String address, String contactNum, String email, String civilStatus){
+                                String placeofBirth, String address, String contactNum, String email, String civilStatus, String fatherName, String motherName){
         applicationType = appType;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -20,9 +20,20 @@ class PassportInformation {
         this.contactNum = contactNum;
         this.email = email;
         this.civilStatus = civilStatus;
-        status = "Pending";
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+    // public void setIssueDate(String issueDate) {
+    //     this.issueDate = issueDate;
+    // }
+    // public String getIssueDate() {
+    //     return issueDate;
+    // }
+    // public void setIssueTime(String issueTime) {
+    //     this.issueTime = issueTime;
+    // }
+    // public String getIssueTime() {
+    //     return issueTime;
     }
-
     public void setAppointmentDate(String appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
@@ -47,6 +58,20 @@ class PassportInformation {
     public String getStatus() { 
         return status; 
     }
+    
+    public void displayInfo(){
+        System.out.println("Name: " + firstName + " " + middleName + " " + lastName);
+        System.out.println("Sex: " + sex);
+        System.out.println("Birthdate: " + birthDate);
+        System.out.println("Place of Birth: " + placeofBirth);
+        System.out.println("Address: " + address);
+        System.out.println("Contact Number: " + contactNum);
+        System.out.println("Email: " + email);
+        System.out.println("Civil Status: " + civilStatus);
+        System.out.println("Father Name: " + fatherName);
+        System.out.println("Mother Name: " + motherName);
+        System.out.println("Appointment Date: " + appointmentDate);
+    }
     // Reciept of Appointment 
     public String toString() {
         return "Ref#: " + referenceNumber + 
@@ -57,50 +82,4 @@ class PassportInformation {
         " | Time Slots: " + Arrays.toString(timeSlots);
     }
 }
-
-/*
-System.out.print("Application Type(New|Renewal): ");
-String appType = sc.nextLine();
-if (appType.isEmpty()) appType = "New";
-
-System.out.print("Last Name: ");
-String lastName = sc.nextLine();
-if (lastName.isEmpty()) lastName = "N/A";
-
-System.out.print("First Name: ");
-String firstName = sc.nextLine();
-if (firstName.isEmpty()) firstName = "N/A";
-
-System.out.print("Middle Name: ");
-String middleName = sc.nextLine();
-if (middleName.isEmpty()) middleName = "N/A";
-
-System.out.print("Sex: ");
-String sex = sc.nextLine();
-if (sex.isEmpty()) sex = "Unspecified";
-
-System.out.print("Birthdate(YYYY-MM-DD): ");
-String birthDate = sc.nextLine();
-if (birthDate.isEmpty()) birthDate = "2000-01-01";
-
-System.out.print("Place of Birth: ");
-String placeofBirth = sc.nextLine();
-if (placeofBirth.isEmpty()) placeofBirth = "Unknown";
-
-System.out.print("Address: ");
-String address = sc.nextLine();
-if (address.isEmpty()) address = "No Address";
-
-System.out.print("Contact Number: ");
-String contactNum = sc.nextLine();
-if (contactNum.isEmpty()) contactNum = "0000000000";
-
-System.out.print("Email: ");
-String email = sc.nextLine();
-if (email.isEmpty()) email = "noemail@example.com";
-
-System.out.print("Civil Status: ");
-String civilStatus = sc.nextLine();
-if (civilStatus.isEmpty()) civilStatus = "Single";
-*/
 

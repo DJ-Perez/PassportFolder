@@ -9,7 +9,6 @@ public class Pasupoto {
         AppointmentAccess form = new AppointmentAccess(applications);
         Admin admin = new Admin(applications);
 
-        //try catch = Dylan
         int mainChoice;
         do {
             System.out.println("\n===== PASSPORT APPOINTMENT SYSTEM =====");
@@ -38,7 +37,6 @@ public class Pasupoto {
     }
     //Appointment Access
     public static void Appoinment(Scanner sc, AppointmentAccess form){
-        //try catch = Dylan
         int userChoice;
         do {
             System.out.println("\n===== Appointment =====");
@@ -71,7 +69,6 @@ public class Pasupoto {
     }
     //Admin Access
     public static void AdminAccess(Scanner sc, Admin admin){
-        //try catch = Dylan
         System.out.print("\nEnter Admin Username: ");
         String userName = sc.nextLine();
         System.out.print("Enter Admin Password: ");
