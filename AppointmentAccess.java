@@ -1,5 +1,6 @@
 package PassportFolder;
 import java.util.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -66,15 +67,9 @@ class AppointmentAccess {
 
         System.out.print("Mother Name: ");
         String motherName = sc.nextLine();
-
-        //StandBy
-        /*System.out.println("Citizenship Acquired By\n(Birth, Naturalization, Election, RA 9225): ");
-        String citizenShip = sc.nextLine();
-        */
         
         LocalDate todayDate = LocalDate.now();
         int currentYear = todayDate.getYear();
-
         
         System.out.print("Appointment Date (YYYY-MM-DD): ");
         String appointmentDate = sc.nextLine();
@@ -141,10 +136,9 @@ class AppointmentAccess {
             }
             }catch(Exception e){
             System.out.println("Invalid format! Please use YYYY-MM-DD.");
-            }    
+            }
         }
     }
-
     public void checkStatus(Scanner sc) {
         //Checked the Application Submitted
         System.out.print("\nEnter Reference Number: ");

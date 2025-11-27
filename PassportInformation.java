@@ -22,18 +22,6 @@ class PassportInformation {
         this.civilStatus = civilStatus;
         this.fatherName = fatherName;
         this.motherName = motherName;
-    // public void setIssueDate(String issueDate) {
-    //     this.issueDate = issueDate;
-    // }
-    // public String getIssueDate() {
-    //     return issueDate;
-    // }
-    // public void setIssueTime(String issueTime) {
-    //     this.issueTime = issueTime;
-    // }
-    // public String getIssueTime() {
-    //     return issueTime;
-    }
     public void setAppointmentDate(String appointmentDate) {
         this.appointmentDate = appointmentDate;
     }

@@ -13,7 +13,7 @@ class Admin{
     public boolean login(String username, String password) {
         return username.equals(adminUser) && password.equals(adminPass);
     }
-
+    //====== View Application =======
     public void viewApplications() {
         if (applications.isEmpty()) {
             System.out.println("\nNo applications found.");
@@ -25,28 +25,35 @@ class Admin{
             }
         }
     }
-
+    //====== Update Status =======
     public void updateStatus(Scanner sc) {
-    System.out.print("\nEnter Reference Number: ");
-    int ref = sc.nextInt();
-    sc.nextLine();
-    for (PassportInformation app : applications) {
-        if (app.getRefNumber() == ref) {
-            System.out.println("Current Status: " + app.getStatus());
+        while(true){
+            try{
+                System.out.print("\nEnter Reference Number: ");
+                int ref = sc.nextInt();
+                sc.nextLine();
+                for (PassportInformation app : applications) {
+                    if (app.getRefNumber() == ref) {
+                        System.out.println("Current Status: " + app.getStatus());
 
-            System.out.print("Enter new status (Approved | Declined): ");
-            String newStatus = sc.nextLine().trim();
+                        System.out.print("Enter new status (Approved | Declined): ");
+                        String newStatus = sc.nextLine().trim();
 
-            while(!newStatus.equalsIgnoreCase("Approved") && !newStatus.equalsIgnoreCase("Declined")){
-                System.out.println("Invalid status. Please enter Approved or Declined.");
-                System.out.print("Input here: ");
-                newStatus = sc.nextLine().trim();
+                        while(!newStatus.equalsIgnoreCase("Approved") && !newStatus.equalsIgnoreCase("Declined")){
+                            System.out.println("Invalid status. Please enter Approved or Declined.");
+                            System.out.print("Input here: ");
+                            newStatus = sc.nextLine().trim();
+                        }
+                        app.setStatus(newStatus);
+                        System.out.println("Status updated!");
+                        return;
+                    }
+                }
+            break;
+            }catch(InputMismatchException e){
+                System.err.print("Invalid input. Please input numbers only!");
             }
-            app.setStatus(newStatus);
-            System.out.println("Status updated!");
-            return;
         }
-    }
-    System.out.println("Application not found.");
+        System.out.println("Application not found.");
     }
 }
