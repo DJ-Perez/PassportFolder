@@ -22,6 +22,8 @@ class PassportInformation {
         this.civilStatus = civilStatus;
         this.fatherName = fatherName;
         this.motherName = motherName;
+        status = "Pending";    
+    }
     public void setAppointmentDate(String appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
